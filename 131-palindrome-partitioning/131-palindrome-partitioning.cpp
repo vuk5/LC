@@ -1,3 +1,4 @@
+/*Idea is: loop through the string, check if substr(0, i) is palindrome. If it is, recursively call recurse() on the rest of sub string: substr(i+1, length). keep the current palindrome partition so far in the 'temp' argument of recurse(). When reaching the end of string, add current partition in the result.*/
 class Solution {
     bool ispal(string s,int start,int end){
         while(start<end)
@@ -13,7 +14,7 @@ class Solution {
             return;
         }
         for(int i=ind;i<s.size();i++){
-            if(ispal(s,ind,i)==true){
+            if(ispal(s,ind,i)==true){  //only proceed if it is a palindrome from beginning to that division point
                 temp.push_back(s.substr(ind,i-ind+1)); //substr[pos,len)
                 recurse(i+1,s,temp,ans);
                 temp.pop_back();
