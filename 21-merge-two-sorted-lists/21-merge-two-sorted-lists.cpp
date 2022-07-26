@@ -17,7 +17,7 @@ public:
         ListNode* head=l1;
         while(l1!=NULL and l2!=NULL){
             ListNode* temp=NULL;
-            while(l1!=NULL  and l1->val <=l2->val){
+            while(l1!=NULL and l1->val <=l2->val){
                 temp=l1; //temp is used to keep track of smallest previous node
                 l1=l1->next;
             }
