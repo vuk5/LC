@@ -7,7 +7,7 @@ public:
         if(nums.size()<=2)return ans;
         for(int i=0;i<nums.size()-2;i++){
             
-            if(i==0 or(i>0 and nums[i]!=nums[i-1])){ //not to take duplicates
+            //if(i==0 or(i>0 and nums[i]!=nums[i-1])){ //not to take duplicates
                 
                 int low=i+1,high=nums.size()-1,sum=0-nums[i];
                 
@@ -31,7 +31,8 @@ public:
                     else if(nums[low]+nums[high]<sum)low++;  //increase the value of low
                     else high--;
                 }
-            }
+            //}
+            while(i+1<nums.size() and nums[i]==nums[i+1])i++;
         }
         return ans;
     }
