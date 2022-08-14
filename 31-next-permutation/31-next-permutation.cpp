@@ -1,21 +1,26 @@
 class Solution {
 public:
     void nextPermutation(vector<int>& nums) {
-        //next_permutation(nums.begin(),nums.end()); //using inbuilt stl
-        
-        int n=nums.size(),k,l;
-        for(k=n-2;k>=0;k--){
-            if(nums[k]<nums[k+1])
+       //algorithm
+        //traverse from backward and find the element which is like nums[i]<nums[i+1] let it be k
+        //again traverse from backward and find the least greater element than that of k
+        //swap both
+        //and reverse the remaining array to get the minimum number
+        int i,k;
+        for( i=nums.size()-2;i>=0;i--){
+            if(nums[i]<nums[i+1])
                 break;
         }
-        if(k<0)reverse(nums.begin(),nums.end());
+         if(i<0)reverse(nums.begin(),nums.end());
         else{
-            for(l=n-1;l>k;l--){
-                if(nums[l]>nums[k])break;
-            }
-            swap(nums[l],nums[k]);
-            reverse(nums.begin()+k+1,nums.end());
+        for( k=nums.size()-1;k>=0;k--)
+        {
+            if(nums[k]>nums[i])
+                break;
         }
-            
+       
+             swap(nums[i],nums[k]);
+            reverse(nums.begin()+i+1,nums.end());
+        }
     }
 };
