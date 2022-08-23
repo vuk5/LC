@@ -26,7 +26,9 @@ public:
             temp=temp->next;
             
         }
+        ListNode* dummy=temp->next;
         temp->next=temp->next->next;
+        delete dummy;
         return head;
     }
 };
