@@ -1,20 +1,16 @@
 class Solution {
 public:
-    vector<int> answerQueries(vector<int>& nums, vector<int>& queries) {
-        vector<int> ans;
+    vector<int> answerQueries(vector<int>& nums, vector<int>& q) {
+        vector<int> ans(nums.size()),res;
         sort(nums.begin(),nums.end());
-        for(int i=0;i<queries.size();i++){
-            int count=0;
-            int sum=0;
-            for(int j=0;j<nums.size();j++){
-                if(sum+nums[j]<=queries[i]){
-                    sum+=nums[j];
-                    count++;
-                }
-            }
-            ans.push_back(count);
+        ans[0]=nums[0];
+        for(int i=1;i<nums.size();i++){
+            ans[i]=ans[i-1]+nums[i];
         }
-        return ans;
+        for(int i=0;i<q.size();i++){
+            res.push_back(upper_bound(ans.begin(),ans.end(),q[i])-ans.begin());
+        }
+        return res;
     }
     
 };
