@@ -4,7 +4,7 @@ public:
         int low=0,high=sqrt(c)+1;
         int mid;
         while(low<=high){
-            mid=((low+high)/2);
+            //mid=(low+high)/2;
             if(pow(low,2)+pow(high,2)==c) return true;
             else if(pow(low,2)+pow(high,2)>c) high--;
             else low++;
